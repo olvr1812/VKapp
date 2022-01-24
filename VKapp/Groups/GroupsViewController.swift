@@ -10,7 +10,7 @@ import UIKit
 class GroupsViewController: UITableViewController {
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-        print("It's work")
+
         // Проверяем идентификатор, чтобы убедиться, что это нужный переход
         if segue.identifier == "addGroup" {
             
@@ -22,12 +22,14 @@ class GroupsViewController: UITableViewController {
             if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
 
         // Получаем город по индексу
-                let group = allGroupsController.all_groups[indexPath.row]
+                let group = allGroupsController.all_groups.name[indexPath.row]
+                let image = allGroupsController.all_groups.image[indexPath.row]
                 
                 if !groups.contains(group) {
 
         // Добавляем город в список выбранных городов
                 groups.append(group)
+                images.append(image)
 
         // Обновляем таблицу
                 tableView.reloadData()
@@ -37,6 +39,7 @@ class GroupsViewController: UITableViewController {
     }
     
     var groups = [String]()
+    var images = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +68,11 @@ class GroupsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
         let group = groups[indexPath.row]
+        let image = images[indexPath.row]
         
         cell.groupName.text = group
+        cell.groupImage.image = UIImage(named: image)
+        cell.imageView?.image = ima
 
         return cell
     }

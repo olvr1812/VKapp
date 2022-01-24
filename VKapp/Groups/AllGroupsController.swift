@@ -9,13 +9,7 @@ import UIKit
 
 class AllGroupsController: UITableViewController {
     
-    var all_groups = [
-            "Новости",
-            "Крипторынок",
-            "Котики",
-            "Скандыла интриги",
-            "ЗОЖ"
-    ]
+    var all_groups = listGroups(name: ["News", "Kittys", "Healthy Lifetyle", "Scandals", "KriptoNews"], image: ["news", "kotiki", "zog", "scandal", "kripta"])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +30,7 @@ class AllGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return all_groups.count
+        return all_groups.name.count
     }
 
 
@@ -44,9 +38,11 @@ class AllGroupsController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "allGroups", for: indexPath) as! AllGroupCell
         
-        let group = all_groups[indexPath.row]
+        let name = all_groups.name[indexPath.row]
+        let image = all_groups.image[indexPath.row]
         
-        cell.allGroupName.text = group
+        cell.allGroupImage.image = UIImage(named: image)
+        cell.allGroupName.text = name
 
         // Configure the cell...
 

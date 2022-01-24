@@ -9,13 +9,8 @@ import UIKit
 
 class AllFriendsController: UITableViewController {
     
-    var friends = [
-        "Вася Пупкин",
-        "Катерина Леонтьева",
-        "Вадим Павлов",
-        "Николая Камнев",
-        "Вера Кандратьева"
-    ]
+    var friendsCellList = friendsLabel(name: ["John Kennedy", "Michael Jordan", "Mark Bush", "Jaff Bathos", "Luk Kang", "Juliet MakMilan"], photo: ["1", "2", "3", "4", "5", "6"])
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +32,7 @@ class AllFriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        return friends.count
+        return friendsCellList.photo.count
     }
 
     
@@ -46,11 +41,12 @@ class AllFriendsController: UITableViewController {
         // Получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! AllFriendsCell
         // Получаем имя друга для конкретной строки
-        let friend = friends[indexPath.row]
+        let friend = friendsCellList.name[indexPath.row]
+        let photo = friendsCellList.photo[indexPath.row]
 
         // Устанавливаем имя друга в надпись ячейки
         cell.friendName.text = friend
-        cell.friendImage.image = UIImage(named: "200765.970x0.png")
+        cell.friendImage.image = UIImage(named: photo)
 
         return cell
     }
