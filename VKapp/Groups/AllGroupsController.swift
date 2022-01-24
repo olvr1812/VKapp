@@ -1,42 +1,21 @@
 //
-//  GroupsViewController.swift
+//  AllGroupsController.swift
 //  VKapp
 //
-//  Created by Оливер Салихов on 23.01.2022.
+//  Created by Оливер Салихов on 24.01.2022.
 //
 
 import UIKit
 
-class GroupsViewController: UITableViewController {
+class AllGroupsController: UITableViewController {
     
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        print("It's work")
-        // Проверяем идентификатор, чтобы убедиться, что это нужный переход
-        if segue.identifier == "addGroup" {
-            
-            // Получаем ссылку на контроллер, с которого осуществлен переход
-            
-            let allGroupsController = segue.source as! AllGroupsController
-
-        // Получаем индекс выделенной ячейки
-            if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
-
-        // Получаем город по индексу
-                let group = allGroupsController.all_groups[indexPath.row]
-                
-                if !groups.contains(group) {
-
-        // Добавляем город в список выбранных городов
-                groups.append(group)
-
-        // Обновляем таблицу
-                tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    var groups = [String]()
+    var all_groups = [
+            "Новости",
+            "Крипторынок",
+            "Котики",
+            "Скандыла интриги",
+            "ЗОЖ"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,21 +36,22 @@ class GroupsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return all_groups.count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
-        let group = groups[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        cell.groupName.text = group
+        let cell = tableView.dequeueReusableCell(withIdentifier: "allGroups", for: indexPath) as! AllGroupCell
+        
+        let group = all_groups[indexPath.row]
+        
+        cell.allGroupName.text = group
+
+        // Configure the cell...
 
         return cell
     }
-    
-    
 
 
     /*
@@ -82,20 +62,17 @@ class GroupsViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            // Удаляем группу из массива
-            groups.remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.

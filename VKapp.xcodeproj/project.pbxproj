@@ -17,6 +17,10 @@
 		F9410CD92795E42100A4BA7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9410CD72795E42100A4BA7F /* Main.storyboard */; };
 		F9410CDB2795E42200A4BA7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9410CDA2795E42200A4BA7F /* Assets.xcassets */; };
 		F9410CDE2795E42200A4BA7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9410CDC2795E42200A4BA7F /* LaunchScreen.storyboard */; };
+		F94A73B8279EAAAE00C16CF4 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73B7279EAAAE00C16CF4 /* AllGroupsController.swift */; };
+		F94A73BA279EAAC800C16CF4 /* AllGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73B9279EAAC800C16CF4 /* AllGroupCell.swift */; };
+		F94A73C1279EFC3E00C16CF4 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73C0279EFC3E00C16CF4 /* PhotosCollectionViewController.swift */; };
+		F94A73C3279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73C2279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		F9410CDA2795E42200A4BA7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9410CDD2795E42200A4BA7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9410CDF2795E42200A4BA7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F94A73B7279EAAAE00C16CF4 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
+		F94A73B9279EAAC800C16CF4 /* AllGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupCell.swift; sourceTree = "<group>"; };
+		F94A73C0279EFC3E00C16CF4 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		F94A73C2279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,8 @@
 			children = (
 				F9294721279DED05007D2C70 /* GroupsViewController.swift */,
 				F9294723279DED21007D2C70 /* GroupCell.swift */,
+				F94A73B7279EAAAE00C16CF4 /* AllGroupsController.swift */,
+				F94A73B9279EAAC800C16CF4 /* AllGroupCell.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -82,6 +92,7 @@
 		F9410CD02795E42100A4BA7F /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				F94A73BB279EFBDE00C16CF4 /* Photo */,
 				F9294720279DECD5007D2C70 /* Groups */,
 				F929471B279DE13B007D2C70 /* Friends */,
 				F9410CD12795E42100A4BA7F /* AppDelegate.swift */,
@@ -93,6 +104,15 @@
 				F9410CDF2795E42200A4BA7F /* Info.plist */,
 			);
 			path = VKapp;
+			sourceTree = "<group>";
+		};
+		F94A73BB279EFBDE00C16CF4 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				F94A73C0279EFC3E00C16CF4 /* PhotosCollectionViewController.swift */,
+				F94A73C2279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,12 +187,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9294724279DED21007D2C70 /* GroupCell.swift in Sources */,
+				F94A73B8279EAAAE00C16CF4 /* AllGroupsController.swift in Sources */,
 				F929471F279DE1DC007D2C70 /* AllFriendsCell.swift in Sources */,
 				F9410CD62795E42100A4BA7F /* ViewController.swift in Sources */,
 				F9294722279DED05007D2C70 /* GroupsViewController.swift in Sources */,
 				F929471D279DE1AE007D2C70 /* AllFriendsController.swift in Sources */,
 				F9410CD22795E42100A4BA7F /* AppDelegate.swift in Sources */,
+				F94A73BA279EAAC800C16CF4 /* AllGroupCell.swift in Sources */,
 				F9410CD42795E42100A4BA7F /* SceneDelegate.swift in Sources */,
+				F94A73C3279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift in Sources */,
+				F94A73C1279EFC3E00C16CF4 /* PhotosCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,7 @@ class AllFriendsController: UITableViewController {
 
         // Устанавливаем имя друга в надпись ячейки
         cell.friendName.text = friend
+        cell.friendImage.image = UIImage(named: "200765.970x0.png")
 
         return cell
     }

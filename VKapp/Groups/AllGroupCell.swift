@@ -1,17 +1,15 @@
 //
-//  AllFriendsCell.swift
+//  AllGroupCell.swift
 //  VKapp
 //
-//  Created by Оливер Салихов on 23.01.2022.
+//  Created by Оливер Салихов on 24.01.2022.
 //
 
 import UIKit
 
-class AllFriendsCell: UITableViewCell {
+class AllGroupCell: UITableViewCell {
 
-    @IBOutlet weak var friendName: UILabel!
-    @IBOutlet weak var friendImage: UIImageView!
-    
+    @IBOutlet weak var allGroupName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
