@@ -8,6 +8,6 @@
 import Foundation
 
 struct friendsLabel {
-    let name: [String]
-    let photo: [String]
+    let name: String
+    let photo: String
 }

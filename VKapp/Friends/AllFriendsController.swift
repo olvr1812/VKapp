@@ -9,11 +9,23 @@ import UIKit
 
 class AllFriendsController: UITableViewController {
     
-    var friendsCellList = friendsLabel(name: ["John Kennedy", "Michael Jordan", "Mark Bush", "Jaff Bathos", "Luk Kang", "Juliet MakMilan"], photo: ["1", "2", "3", "4", "5", "6"])
+    var friendsCellList: [friendsLabel] = [.init(name: "Hohn Kennedy", photo: "1"),
+                                           .init(name: "Karaline Luis", photo: "2"),
+                                           .init(name: "Jack Rassel", photo: "3"),
+                                           .init(name: "Don Karleone", photo: "4"),
+                                           .init(name: "Sindy MakMilan", photo: "5")]
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerTableViewCells()
+        setupTableView()
+        
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,25 +44,26 @@ class AllFriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        return friendsCellList.photo.count
+        return friendsCellList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // Получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! AllFriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AllFriendsCell.cellId, for: indexPath) as! AllFriendsCell
         // Получаем имя друга для конкретной строки
-        let friend = friendsCellList.name[indexPath.row]
-        let photo = friendsCellList.photo[indexPath.row]
+        let cellFriend = friendsCellList[indexPath.row]
 
         // Устанавливаем имя друга в надпись ячейки
-        cell.friendName.text = friend
-        cell.friendImage.image = UIImage(named: photo)
+        cell.setData(with: cellFriend)
 
         return cell
     }
     
+    
+    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -97,4 +110,15 @@ class AllFriendsController: UITableViewController {
     }
     */
 
+}
+
+private extension AllFriendsController {
+    func registerTableViewCells() {
+        tableView.register(AllFriendsCell.nib(), forCellReuseIdentifier: AllFriendsCell.cellId)
+    }
+    
+    func setupTableView() {
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 72
+    }
 }
