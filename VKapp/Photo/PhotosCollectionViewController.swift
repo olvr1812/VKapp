@@ -10,7 +10,7 @@ import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
     
-    
+    var userInfo = [friendsLabel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +43,14 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 9
+        return userInfo.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCollectionViewCell else {return UICollectionViewCell() }
+        
+        let profileInfo = userInfo[indexPath.row]
+        cell.infoInCell(with: profileInfo)
         
         
     

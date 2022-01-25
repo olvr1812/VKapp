@@ -72,7 +72,6 @@ class GroupsViewController: UITableViewController {
         
         cell.groupName.text = group
         cell.groupImage.image = UIImage(named: image)
-        cell.imageView?.image = ima
 
         return cell
     }

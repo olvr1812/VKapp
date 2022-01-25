@@ -161,7 +161,7 @@
                                 <connections>
                                     <outlet property="friendImage" destination="LRm-Dv-lHe" id="eO6-J7-CUh"/>
                                     <outlet property="friendName" destination="l9b-Ye-ZFc" id="nuM-Im-J3D"/>
-                                    <segue destination="lM9-Zw-Tqh" kind="show" id="c4j-iR-jjq"/>
+                                    <segue destination="lM9-Zw-Tqh" kind="show" identifier="friendPriofile" id="c4j-iR-jjq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -171,9 +171,7 @@
                         <color key="badgeColor" systemColor="systemPinkColor"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Друзья" id="ll8-65-nBa">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="na8-Ge-6Pv"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Друзья" id="ll8-65-nBa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soF-Ic-LyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,14 +269,23 @@
                                                 <constraint firstAttribute="width" constant="102" id="nj2-Wl-Kfh"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdF-Xi-HSR">
+                                            <rect key="frame" x="54" y="125" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="DdF-Xi-HSR" firstAttribute="centerX" secondItem="x3O-pQ-POz" secondAttribute="centerX" id="I4W-q6-ONO"/>
+                                        <constraint firstItem="DdF-Xi-HSR" firstAttribute="top" secondItem="x3O-pQ-POz" secondAttribute="top" constant="125" id="LoU-WQ-dAq"/>
                                         <constraint firstItem="86D-Ni-po4" firstAttribute="centerX" secondItem="x3O-pQ-POz" secondAttribute="centerX" id="Mfm-Jk-Vmb"/>
                                         <constraint firstItem="86D-Ni-po4" firstAttribute="centerY" secondItem="x3O-pQ-POz" secondAttribute="centerY" id="vDE-gn-e3s"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="FriendPhoto" destination="86D-Ni-po4" id="rbe-uX-po8"/>
+                                    <outlet property="labelName" destination="DdF-Xi-HSR" id="hev-K8-WuN"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
