@@ -14,6 +14,18 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func infoInCell(with info: friendsLabel) {
         labelName.text = info.name
         FriendPhoto.image = UIImage(named: info.photo)
+        
+        FriendPhoto.layer.borderWidth = 2
+        FriendPhoto.layer.borderColor = UIColor.black.cgColor
+        FriendPhoto.layer.cornerRadius = 130
+        FriendPhoto.layer.masksToBounds = true
+        
+        FriendPhoto.layer.shadowColor = UIColor.red.cgColor
+        FriendPhoto.layer.shadowOpacity = 100
+        FriendPhoto.layer.shadowRadius = 100
+        FriendPhoto.layer.shadowOffset = CGSize.init(width: 200, height: 200)
+        
+
     }
     
     
