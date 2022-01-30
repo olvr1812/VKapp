@@ -16,3 +16,5 @@ struct firendInfo {
     let name: String
     let photo: String
 }
+
+

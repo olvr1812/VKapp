@@ -1,32 +1,37 @@
 //
-//  AllFriendsController.swift
+//  AllGroupsController.swift
 //  VKapp
 //
-//  Created by Оливер Салихов on 23.01.2022.
+//  Created by Оливер Салихов on 24.01.2022.
 //
 
 import UIKit
 
-class AllFriendsController: UITableViewController {
+class AllGroupsController: UITableViewController {
     
-    var friendsCellList: [friendsLabel] = [.init(name: "Simba", photo: "1"),
-                                           .init(name: "Hercules", photo: "2"),
-                                           .init(name: "James P. Sallyvan", photo: "3"),
-                                           .init(name: "Stuart Little", photo: "4"),
-                                           .init(name: "Mike Vazovsky", photo: "5")]
+    let cellGroupID = "cellGroupID"
     
     
+    @IBOutlet var allGroupsTableView: UITableView!
     
     
-
+    var all_groups: [infoGroupInView] = [.init(name: "News", image: "news"),
+                                         .init(name: "Kittys", image: "kotiki"),
+                                         .init(name: "Healthy Lifestyle", image: "zog"),
+                                         .init(name: "Scandals", image: "scandal"),
+                                         .init(name: "KriptoNews", image: "kripta")]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        allGroupsTableView.rowHeight = 72
+        //registerTableView()
     }
 
     // MARK: - Table view data source
@@ -38,29 +43,23 @@ class AllFriendsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-        return friendsCellList.count
+        return all_groups.count
     }
 
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellGroupID, for: indexPath) as! AllGroupCell
+        
+        let data = all_groups[indexPath.row]
+        
+        cell.infoInCell(with: data)
 
-        // Получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! AllFriendsCell
-        // Получаем имя друга для конкретной строки
-        let cellFriendInfo = friendsCellList[indexPath.row]
-
-        // Устанавливаем имя друга в надпись ячейки
-        cell.infoInCell(with: cellFriendInfo)
+        // Configure the cell...
 
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellFriendInfo = friendsCellList[indexPath.row]
-        performSegue(withIdentifier: "friendPriofile", sender: cellFriendInfo)
-    }
-    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -70,25 +69,17 @@ class AllFriendsController: UITableViewController {
     }
     */
 
-
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            friendsCellList.remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "friendPriofile"{
-            guard let collectionViewController = segue.destination as? PhotosCollectionViewController, let cellFriendInfo = sender as? friendsLabel else {return}
-            collectionViewController.userInfo.append(cellFriendInfo)
-        }
-    }
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -116,3 +107,9 @@ class AllFriendsController: UITableViewController {
     */
 
 }
+
+//private extension AllGroupsController {
+//    func registerTableView() {
+//        tableView.register(AllGroupCell.nib(), forCellReuseIdentifier: cellGroupID)
+//    }
+//}

@@ -10,6 +10,8 @@ import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var newView: UIView!
+    
     var userInfo = [friendsLabel]()
 
     override func viewDidLoad() {
@@ -90,4 +92,6 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     */
 
+    
+    
 }

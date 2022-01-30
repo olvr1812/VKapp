@@ -1,15 +1,47 @@
 //
-//  AllGroupsController.swift
+//  GroupsViewController.swift
 //  VKapp
 //
-//  Created by Оливер Салихов on 24.01.2022.
+//  Created by Оливер Салихов on 23.01.2022.
 //
 
 import UIKit
 
-class AllGroupsController: UITableViewController {
+class GroupsViewController: UITableViewController {
     
-    var all_groups = listGroups(name: ["News", "Kittys", "Healthy Lifetyle", "Scandals", "KriptoNews"], image: ["news", "kotiki", "zog", "scandal", "kripta"])
+    
+    
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+
+        // Проверяем идентификатор, чтобы убедиться, что это нужный переход
+        if segue.identifier == "addGroup" {
+            
+            // Получаем ссылку на контроллер, с которого осуществлен переход
+            let allGroupsController = segue.source as! AllGroupsController
+            
+            // Получаем индекс выделенной ячейки
+            if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
+                
+                // Получаем город по индексу
+                let data = allGroupsController.all_groups[indexPath.row]
+                
+                if !groups.contains(data.name) {
+                    
+                    // Добавляем имя группы в список выбранных групп
+                    groups.append(data.name)
+                    
+                    //Добовляем имя группы и имя картинки
+                    dataGroup.append(data)
+                    
+                    // Обновляем таблицу
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    var groups = [String]()
+    var dataGroup = [infoGroupInView]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,24 +62,21 @@ class AllGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return all_groups.name.count
+        return groups.count
     }
 
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "allGroups", for: indexPath) as! AllGroupCell
-        
-        let name = all_groups.name[indexPath.row]
-        let image = all_groups.image[indexPath.row]
-        
-        cell.allGroupImage.image = UIImage(named: image)
-        cell.allGroupName.text = name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
-        // Configure the cell...
+        let group = dataGroup[indexPath.row]
+        
+        cell.infoInView(with: group)
 
         return cell
     }
+    
+    
 
 
     /*
@@ -58,17 +87,20 @@ class AllGroupsController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            // Удаляем группу из массива
+            groups.remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

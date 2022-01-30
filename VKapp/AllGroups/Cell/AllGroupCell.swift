@@ -8,9 +8,15 @@
 import UIKit
 
 class AllGroupCell: UITableViewCell {
-
+    
+//    static func nib() -> UINib {
+//
+//        return UINib(nibName: "AllGroupCell", bundle: nil)
+//    }`````
+    
     @IBOutlet weak var allGroupName: UILabel!
-    @IBOutlet weak var allGroupImage: UIImageView!
+    @IBOutlet weak var allGroupeImage: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +27,14 @@ class AllGroupCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func infoInCell(with info: infoGroupInView) {
+        allGroupName.text = info.name
+        
+        allGroupeImage.image = UIImage(named: info.image)
+        
+        
     }
 
 }
