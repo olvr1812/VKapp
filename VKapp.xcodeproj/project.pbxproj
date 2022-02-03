@@ -19,6 +19,8 @@
 		F94A73BA279EAAC800C16CF4 /* AllGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73B9279EAAC800C16CF4 /* AllGroupCell.swift */; };
 		F94A73C1279EFC3E00C16CF4 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73C0279EFC3E00C16CF4 /* PhotosCollectionViewController.swift */; };
 		F94A73C3279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A73C2279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift */; };
+		F950177327AA91FF006EE654 /* HeaderForCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950177127AA91FF006EE654 /* HeaderForCellViewController.swift */; };
+		F950177427AA91FF006EE654 /* HeaderForCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F950177227AA91FF006EE654 /* HeaderForCellViewController.xib */; };
 		F95EC94C27A52FF900B939ED /* AllFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95EC94927A52FF900B939ED /* AllFriendsController.swift */; };
 		F95EC94D27A52FF900B939ED /* FriendsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95EC94A27A52FF900B939ED /* FriendsListCell.swift */; };
 		F95EC94F27A53D5300B939ED /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95EC94E27A53D5300B939ED /* GradientBackground.swift */; };
@@ -44,6 +46,8 @@
 		F94A73B9279EAAC800C16CF4 /* AllGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupCell.swift; sourceTree = "<group>"; };
 		F94A73C0279EFC3E00C16CF4 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		F94A73C2279EFC5D00C16CF4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		F950177127AA91FF006EE654 /* HeaderForCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCellViewController.swift; sourceTree = "<group>"; };
+		F950177227AA91FF006EE654 /* HeaderForCellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderForCellViewController.xib; sourceTree = "<group>"; };
 		F95EC94927A52FF900B939ED /* AllFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFriendsController.swift; sourceTree = "<group>"; };
 		F95EC94A27A52FF900B939ED /* FriendsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListCell.swift; sourceTree = "<group>"; };
 		F95EC94E27A53D5300B939ED /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				F95EC94A27A52FF900B939ED /* FriendsListCell.swift */,
 				F95EC95227A552DD00B939ED /* AllFriendsCell.swift */,
 				F95EC95327A552DD00B939ED /* AllFriendsCell.xib */,
+				F950177127AA91FF006EE654 /* HeaderForCellViewController.swift */,
+				F950177227AA91FF006EE654 /* HeaderForCellViewController.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				F9410CDB2795E42200A4BA7F /* Assets.xcassets in Resources */,
 				F9410CD92795E42100A4BA7F /* Main.storyboard in Resources */,
 				F95EC95527A552DD00B939ED /* AllFriendsCell.xib in Resources */,
+				F950177427AA91FF006EE654 /* HeaderForCellViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9294724279DED21007D2C70 /* GroupCell.swift in Sources */,
+				F950177327AA91FF006EE654 /* HeaderForCellViewController.swift in Sources */,
 				F95EC94C27A52FF900B939ED /* AllFriendsController.swift in Sources */,
 				F9A91C1A279F2B8700E9FD81 /* ListOfGroups.swift in Sources */,
 				F94A73B8279EAAAE00C16CF4 /* AllGroupsController.swift in Sources */,
