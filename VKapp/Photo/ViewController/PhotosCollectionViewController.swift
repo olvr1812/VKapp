@@ -36,7 +36,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -63,12 +63,11 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-    /*
+
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
 
     /*
     // Uncomment this method to specify if the specified item should be selected
