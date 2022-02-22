@@ -11,16 +11,18 @@ var data: [String] = ["Creat view", "Add stirngs", "Add data", "Add buttton", "C
 
 
 
-class ViewController: UIViewController {
+class RegisteretionView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // Жест нажатия
-        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        // Присваиваем его UIScrollVIew
-        scrollView?.addGestureRecognizer(hideKeyboardGesture)
+//        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+//        // Присваиваем его UIScrollVIew
+//        scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        animateTextField()
     }
     
     @IBOutlet weak var loginInput: UITextField!
@@ -140,3 +142,21 @@ class ViewController: UIViewController {
         }
 }
 
+private extension RegisteretionView {
+    func animateTextField() {
+        
+        let offset = view.bounds.width
+        
+        passwordInput.transform = CGAffineTransform(translationX: -offset, y: 0)
+        
+        loginInput.transform = CGAffineTransform(translationX: offset, y: 0)
+        
+        UIView.animate(withDuration: 1, delay: 1, options: [.curveEaseOut], animations: {
+            self.loginInput.transform = .identity
+            self.passwordInput.transform = .identity
+            
+        })
+    
+        
+    }
+}
