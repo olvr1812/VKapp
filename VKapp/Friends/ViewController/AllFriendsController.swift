@@ -32,38 +32,38 @@ class AllFriendsController: UITableViewController {
 //        .init(name: "Mike", surname: "Vazovsky", photo: "5")
 //    ]
     
-    var friendsCellList_A: [friendsLabel] = [.init(name: "Asterix", surname: "", photo: "1")]
+    private var friendsCellList_A: [friendsLabel] = [.init(name: "Asterix", surname: "", photo: "asterix")]
     
-    var friendsCellList_H: [friendsLabel] = [
+    private var friendsCellList_H: [friendsLabel] = [
         .init(name: "Hercules", surname: "", photo: "2"),
     ]
     
-    var friendsCellList_S: [friendsLabel] = [
-        .init(name: "James P.", surname: "Sallyvan", photo: "3"),
-        .init(name: "Bart", surname: "Simpson", photo: "3"),
-        .init(name: "Homer", surname: "Simpson", photo: "3"),
-        .init(name: "Liza", surname: "Simpson", photo: "3"),
-        .init(name: "Marge", surname: "Simpson", photo: "3"),
-        .init(name: "Mo", surname: "Szyslak", photo: "1")
-    ]
-    
-    var friendsCellList_L: [friendsLabel] = [
+    private var friendsCellList_L: [friendsLabel] = [
         .init(name: "Stuart", surname: "Little", photo: "4")
     ]
     
-    var friendsCellList_M: [friendsLabel] = [
-        .init(name: "Lighting", surname: "McQueen", photo: "1"),
-        .init(name: "Sailor", surname: "Moon", photo: "1"),
-        .init(name: "Mufasa", surname: "", photo: "1")
+    private var friendsCellList_M: [friendsLabel] = [
+        .init(name: "Lighting", surname: "McQueen", photo: "McQueen"),
+        .init(name: "Sailor", surname: "Moon", photo: "sailor"),
+        .init(name: "Mufasa", surname: "", photo: "mufasa")
     ]
     
-    var friendsCellList_V: [friendsLabel] = [
+    private var friendsCellList_S: [friendsLabel] = [
+        .init(name: "James P.", surname: "Sallyvan", photo: "3"),
+        .init(name: "Bart", surname: "Simpson", photo: "bart"),
+        .init(name: "Homer", surname: "Simpson", photo: "homer"),
+        .init(name: "Liza", surname: "Simpson", photo: "liza"),
+        .init(name: "Marge", surname: "Simpson", photo: "marge"),
+        .init(name: "Mo", surname: "Szyslak", photo: "mo")
+    ]
+    
+    private var friendsCellList_V: [friendsLabel] = [
         .init(name: "Mike", surname: "Vazovsky", photo: "5")
     ]
     
-    var friendCellError: [friendsLabel] = [.init (name: "Error", surname: "Error", photo: "1")]
+    private let friendCellError: [friendsLabel] = [.init (name: "Error", surname: "Error", photo: "1")]
     
-    let numberOfSection = 5
+    private let numberOfSection = 5
     
 
     
@@ -122,7 +122,7 @@ class AllFriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // Получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellID", for: indexPath) as! AllFriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellID") as! AllFriendsCell
         // Получаем имя друга для конкретной строки
         
         switch (indexPath.section) {
@@ -150,8 +150,27 @@ class AllFriendsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cellFriendInfo = friendsCellList_S[indexPath.row]
-        performSegue(withIdentifier: "friendPriofile", sender: cellFriendInfo)
+        var cellFriendInfo = friendsLabel(name: nil, surname: nil, photo: nil)
+        
+        switch(indexPath.section) {
+            
+        case 1:
+            cellFriendInfo = friendsCellList_H[indexPath.row]
+        case 2:
+            cellFriendInfo = friendsCellList_L[indexPath.row]
+        case 3:
+            cellFriendInfo = friendsCellList_M[indexPath.row]
+        case 4:
+            cellFriendInfo = friendsCellList_S[indexPath.row]
+        case 5:
+            cellFriendInfo = friendsCellList_V[indexPath.row]
+        default:
+            cellFriendInfo = friendsCellList_A[indexPath.row]
+        }
+        
+        let friendInfoSender = cellFriendInfo
+        
+        performSegue(withIdentifier: "friendPriofile", sender: friendInfoSender)
     }
     
 
@@ -217,6 +236,7 @@ class AllFriendsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let headerCell = tableView.dequeueReusableCell(withIdentifier: friendHeaderIdentifier) as! HeaderForCellViewController
         
         switch (section) {
@@ -235,6 +255,7 @@ class AllFriendsController: UITableViewController {
         default:
             headerCell.headerLabel.text = "Error"
         }
+        
         
         return headerCell
     }
@@ -277,8 +298,8 @@ private extension AllFriendsController {
 }
 
 
-private extension AllFriendsController {
+extension AllFriendsController {
     func registerHeaderTableView() {
-        tableView.register(HeaderForCellViewController.nibb(), forCellReuseIdentifier: "headerForFriendListID")
+        tableView.register(HeaderForCellViewController.nib(), forCellReuseIdentifier: friendHeaderIdentifier)
     }
 }

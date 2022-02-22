@@ -11,7 +11,7 @@ var data: [String] = ["Creat view", "Add stirngs", "Add data", "Add buttton", "C
 
 
 
-class ViewController: UIViewController {
+class RegisteretionView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,14 +142,14 @@ class ViewController: UIViewController {
         }
 }
 
-private extension ViewController {
+private extension RegisteretionView {
     func animateTextField() {
         
         let offset = view.bounds.width
         
-        passwordInput.transform = CGAffineTransform(scaleX: -offset, y: 0)
+        passwordInput.transform = CGAffineTransform(translationX: -offset, y: 0)
         
-        loginInput.transform = CGAffineTransform(scaleX: offset, y: 0)
+        loginInput.transform = CGAffineTransform(translationX: offset, y: 0)
         
         UIView.animate(withDuration: 1, delay: 1, options: [.curveEaseOut], animations: {
             self.loginInput.transform = .identity

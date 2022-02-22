@@ -8,9 +8,9 @@
 import Foundation
 
 struct friendsLabel {
-    let name: String
+    let name: String?
     let surname: String?
-    let photo: String
+    let photo: String?
 }
 
 struct firendInfo {

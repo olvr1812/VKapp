@@ -11,7 +11,7 @@
 		F9294724279DED21007D2C70 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9294723279DED21007D2C70 /* GroupCell.swift */; };
 		F9410CD22795E42100A4BA7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9410CD12795E42100A4BA7F /* AppDelegate.swift */; };
 		F9410CD42795E42100A4BA7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9410CD32795E42100A4BA7F /* SceneDelegate.swift */; };
-		F9410CD62795E42100A4BA7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9410CD52795E42100A4BA7F /* ViewController.swift */; };
+		F9410CD62795E42100A4BA7F /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9410CD52795E42100A4BA7F /* RegistrationView.swift */; };
 		F9410CD92795E42100A4BA7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9410CD72795E42100A4BA7F /* Main.storyboard */; };
 		F9410CDB2795E42200A4BA7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9410CDA2795E42200A4BA7F /* Assets.xcassets */; };
 		F9410CDE2795E42200A4BA7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9410CDC2795E42200A4BA7F /* LaunchScreen.storyboard */; };
@@ -29,6 +29,7 @@
 		F95EC95E27A57EDD00B939ED /* AllGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95EC95D27A57EDD00B939ED /* AllGroupCell.xib */; };
 		F95EC96027A6D4FD00B939ED /* AllGroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95EC95F27A6D4FD00B939ED /* AllGroupList.swift */; };
 		F9A91C1A279F2B8700E9FD81 /* ListOfGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A91C19279F2B8700E9FD81 /* ListOfGroups.swift */; };
+		F9CC79BE27C538F40021DBC2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC79BD27C538F40021DBC2 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +38,7 @@
 		F9410CCE2795E42100A4BA7F /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9410CD12795E42100A4BA7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9410CD32795E42100A4BA7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F9410CD52795E42100A4BA7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9410CD52795E42100A4BA7F /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F9410CD82795E42100A4BA7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9410CDA2795E42200A4BA7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9410CDD2795E42200A4BA7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		F95EC95D27A57EDD00B939ED /* AllGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllGroupCell.xib; sourceTree = "<group>"; };
 		F95EC95F27A6D4FD00B939ED /* AllGroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupList.swift; sourceTree = "<group>"; };
 		F9A91C19279F2B8700E9FD81 /* ListOfGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfGroups.swift; sourceTree = "<group>"; };
+		F9CC79BD27C538F40021DBC2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		F929471B279DE13B007D2C70 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				F9CC79BF27C53AC60021DBC2 /* Header */,
 				F95EC95127A5517B00B939ED /* Cell */,
 				F95EC95027A5515800B939ED /* ViewController */,
 			);
@@ -106,13 +109,13 @@
 		F9410CD02795E42100A4BA7F /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				F9CC79BC27C538D40021DBC2 /* Registration */,
 				F94A73BB279EFBDE00C16CF4 /* Photo */,
 				F9294720279DECD5007D2C70 /* MyGroups */,
 				F95EC95A27A57A6F00B939ED /* AllGroups */,
 				F929471B279DE13B007D2C70 /* Friends */,
 				F9410CD12795E42100A4BA7F /* AppDelegate.swift */,
 				F9410CD32795E42100A4BA7F /* SceneDelegate.swift */,
-				F9410CD52795E42100A4BA7F /* ViewController.swift */,
 				F9410CD72795E42100A4BA7F /* Main.storyboard */,
 				F95EC94E27A53D5300B939ED /* GradientBackground.swift */,
 				F9410CDA2795E42200A4BA7F /* Assets.xcassets */,
@@ -142,11 +145,9 @@
 		F95EC95127A5517B00B939ED /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				F95EC95327A552DD00B939ED /* AllFriendsCell.xib */,
 				F95EC94A27A52FF900B939ED /* FriendsListCell.swift */,
 				F95EC95227A552DD00B939ED /* AllFriendsCell.swift */,
-				F95EC95327A552DD00B939ED /* AllFriendsCell.xib */,
-				F950177127AA91FF006EE654 /* HeaderForCellViewController.swift */,
-				F950177227AA91FF006EE654 /* HeaderForCellViewController.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -209,6 +210,24 @@
 				F95EC95D27A57EDD00B939ED /* AllGroupCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F9CC79BC27C538D40021DBC2 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F9410CD52795E42100A4BA7F /* RegistrationView.swift */,
+				F9CC79BD27C538F40021DBC2 /* Session.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		F9CC79BF27C53AC60021DBC2 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				F950177127AA91FF006EE654 /* HeaderForCellViewController.swift */,
+				F950177227AA91FF006EE654 /* HeaderForCellViewController.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9294724279DED21007D2C70 /* GroupCell.swift in Sources */,
+				F9CC79BE27C538F40021DBC2 /* Session.swift in Sources */,
 				F950177327AA91FF006EE654 /* HeaderForCellViewController.swift in Sources */,
 				F95EC94C27A52FF900B939ED /* AllFriendsController.swift in Sources */,
 				F9A91C1A279F2B8700E9FD81 /* ListOfGroups.swift in Sources */,
@@ -293,7 +313,7 @@
 				F95EC94D27A52FF900B939ED /* FriendsListCell.swift in Sources */,
 				F95EC95427A552DD00B939ED /* AllFriendsCell.swift in Sources */,
 				F95EC94F27A53D5300B939ED /* GradientBackground.swift in Sources */,
-				F9410CD62795E42100A4BA7F /* ViewController.swift in Sources */,
+				F9410CD62795E42100A4BA7F /* RegistrationView.swift in Sources */,
 				F9294722279DED05007D2C70 /* GroupsViewController.swift in Sources */,
 				F9410CD22795E42100A4BA7F /* AppDelegate.swift in Sources */,
 				F95EC96027A6D4FD00B939ED /* AllGroupList.swift in Sources */,

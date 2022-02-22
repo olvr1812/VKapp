@@ -28,6 +28,12 @@ class GroupCell: UITableViewCell {
         
         groupName.text = info.name
         groupImage.image = UIImage(named: info.image)
+//        groupImage.clipsToBounds = true
+//        groupImage.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+//        groupImage.layer.borderWidth = 2
+//        groupImage.layer.borderColor = UIColor.black.cgColor
+//        groupImage.layer.cornerRadius = 35
+//        groupImage.image
     }
 
 }

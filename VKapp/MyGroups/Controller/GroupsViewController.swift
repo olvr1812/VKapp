@@ -21,6 +21,7 @@ class GroupsViewController: UITableViewController {
             
             // Получаем индекс выделенной ячейки
             if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
+                print(allGroupsController.all_groups)
                 
                 // Получаем город по индексу
                 let data = allGroupsController.all_groups[indexPath.row]
@@ -95,7 +96,7 @@ class GroupsViewController: UITableViewController {
             // Удаляем группу из массива
             groups.remove(at: indexPath.row)
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

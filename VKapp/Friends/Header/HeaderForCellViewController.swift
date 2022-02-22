@@ -9,13 +9,13 @@ import UIKit
 
 class HeaderForCellViewController: UITableViewCell {
     
-    static func nibb() -> UINib {
+    static func nib() -> UINib {
         
         return UINib(nibName: "HeaderForCellViewController", bundle: nil)
     }
     
 
-    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet public var headerLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
