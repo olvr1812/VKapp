@@ -12,9 +12,13 @@ class GroupsViewController: UITableViewController {
     
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-
+        
+        print(segue.identifier)
+        
         // Проверяем идентификатор, чтобы убедиться, что это нужный переход
         if segue.identifier == "addGroup" {
+            
+            print("It work too")
             
             // Получаем ссылку на контроллер, с которого осуществлен переход
             let allGroupsController = segue.source as! AllGroupsController

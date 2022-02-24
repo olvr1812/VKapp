@@ -198,7 +198,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soF-Ic-LyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7139.130434782609" y="68.973214285714278"/>
+            <point key="canvasLocation" x="7036" y="69"/>
         </scene>
         <!--All Groups Controller-->
         <scene sceneID="vYS-0k-dHJ">
@@ -221,18 +221,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-x1-4cv">
-                                            <rect key="frame" x="10" y="1" width="70" height="70"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kp6-33-x8T">
+                                            <rect key="frame" x="10" y="1" width="70" height="72"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="5QM-Ol-UOC"/>
-                                                <constraint firstAttribute="width" constant="70" id="zb4-JE-tr0"/>
+                                                <constraint firstAttribute="height" constant="70" id="M4a-UH-XL7"/>
+                                                <constraint firstAttribute="width" constant="70" id="pf3-g5-faW"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMw-Nf-9LQ">
-                                            <rect key="frame" x="90" y="25.5" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3U-6r-OQt">
+                                            <rect key="frame" x="90" y="21" width="200" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="FLs-30-eAu"/>
-                                                <constraint firstAttribute="height" constant="21" id="wtP-Ym-1SU"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5JA-Ki-r7s"/>
+                                                <constraint firstAttribute="height" constant="30" id="geK-YW-d6i"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -240,17 +240,18 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="eMw-Nf-9LQ" secondAttribute="trailing" constant="282" id="LE3-3S-vIp"/>
-                                        <constraint firstItem="WPv-x1-4cv" firstAttribute="leading" secondItem="xiH-ka-dKA" secondAttribute="leading" constant="10" id="VeU-ik-SqJ"/>
-                                        <constraint firstItem="eMw-Nf-9LQ" firstAttribute="centerY" secondItem="xiH-ka-dKA" secondAttribute="centerY" id="brF-sR-Tcj"/>
-                                        <constraint firstItem="WPv-x1-4cv" firstAttribute="centerY" secondItem="xiH-ka-dKA" secondAttribute="centerY" id="jC2-Jw-6L1"/>
-                                        <constraint firstItem="eMw-Nf-9LQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WPv-x1-4cv" secondAttribute="trailing" constant="8" symbolic="YES" id="noJ-sb-ryC"/>
+                                        <constraint firstItem="p3U-6r-OQt" firstAttribute="centerY" secondItem="xiH-ka-dKA" secondAttribute="centerY" id="8DJ-LL-AaZ"/>
+                                        <constraint firstItem="Kp6-33-x8T" firstAttribute="top" secondItem="xiH-ka-dKA" secondAttribute="top" constant="1" id="Pbb-K7-q5C"/>
+                                        <constraint firstItem="p3U-6r-OQt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kp6-33-x8T" secondAttribute="trailing" constant="8" symbolic="YES" id="V7m-my-W1s"/>
+                                        <constraint firstAttribute="trailing" secondItem="p3U-6r-OQt" secondAttribute="trailing" constant="124" id="lea-K7-BVh"/>
+                                        <constraint firstItem="Kp6-33-x8T" firstAttribute="leading" secondItem="xiH-ka-dKA" secondAttribute="leading" constant="10" id="mbf-qx-LJQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Kp6-33-x8T" secondAttribute="bottom" constant="-1" id="qX8-lH-jHT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="allGroupName" destination="eMw-Nf-9LQ" id="Bzm-Gu-edW"/>
-                                    <outlet property="allGroupeImage" destination="WPv-x1-4cv" id="chn-mE-8Uk"/>
-                                    <segue destination="rvw-5X-6jc" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="rkr-Qw-6zU"/>
+                                    <outlet property="allGroupName" destination="p3U-6r-OQt" id="M6z-MH-ubq"/>
+                                    <outlet property="allGroupeImage" destination="Kp6-33-x8T" id="UeO-SN-I47"/>
+                                    <segue destination="rvw-5X-6jc" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="M3s-lp-opy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -267,7 +268,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IlX-aK-mQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="rvw-5X-6jc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7139" y="875"/>
+            <point key="canvasLocation" x="7035" y="875"/>
         </scene>
         <!--Photos Collection View Controller-->
         <scene sceneID="8bN-sO-sY7">
@@ -344,7 +345,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXD-2w-L3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8118.8405797101459" y="68.973214285714278"/>
+            <point key="canvasLocation" x="7949" y="69"/>
         </scene>
         <!--Gorups-->
         <scene sceneID="7WI-0g-m3C">
@@ -406,7 +407,8 @@
                     <navigationItem key="navigationItem" title="Группы" id="THk-Gs-D9N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YPn-OJ-O8E">
                             <connections>
-                                <segue destination="Ne7-K6-b20" kind="show" identifier="addGroups" id="n88-1j-yI1"/>
+                                <action selector="addGroupWithSegue:" destination="jdh-8r-ke3" id="ajl-au-n45"/>
+                                <segue destination="Ne7-K6-b20" kind="show" identifier="" id="n88-1j-yI1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -449,7 +451,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLq-Uv-rhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6279.7101449275369" y="68.973214285714278"/>
+            <point key="canvasLocation" x="6154" y="69"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="B93-6o-q4b">
