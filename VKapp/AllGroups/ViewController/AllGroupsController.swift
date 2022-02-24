@@ -9,24 +9,48 @@ import UIKit
 
 class AllGroupsController: UITableViewController {
     
+    var all_groups: [infoGroupInView] = [.init(name: "News", image: "news"),
+                                          .init(name: "Kittys", image: "kotiki"),
+                                          .init(name: "Healthy Lifestyle", image: "zog"),
+                                          .init(name: "Scandals", image: "scandal"),
+                                          .init(name: "KriptoNews", image: "kripta")]
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredGroups: [infoGroupInView] = []
+    
+    
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
     let cellGroupID = "cellGroupID"
     
     @IBOutlet var allGroupsTableView: UITableView!
     
     
-    var all_groups: [infoGroupInView] = [.init(name: "News", image: "news"),
-                                         .init(name: "Kittys", image: "kotiki"),
-                                         .init(name: "Healthy Lifestyle", image: "zog"),
-                                         .init(name: "Scandals", image: "scandal"),
-                                         .init(name: "KriptoNews", image: "kripta")]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Поиск групп"
+        
+        navigationItem.searchController = searchController
+        
+        definesPresentationContext = true
 
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.reloadData()
         
     }
 
@@ -39,6 +63,11 @@ class AllGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
+        if isFiltering {
+            return filteredGroups.count
+        }
+        
         return all_groups.count
     }
 
@@ -47,7 +76,13 @@ class AllGroupsController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellGroupID, for: indexPath) as! AllGroupCell
         
-        let data = all_groups[indexPath.row]
+        let data: infoGroupInView
+        
+        if isFiltering {
+            data = filteredGroups[indexPath.row]
+          } else {
+            data = all_groups[indexPath.row]
+          }
         
         
         
@@ -57,5 +92,19 @@ class AllGroupsController: UITableViewController {
 
         return cell
     }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredGroups = all_groups.filter {
+            (all_groups: infoGroupInView) -> Bool in
+            return all_groups.name.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+}
 
+extension AllGroupsController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+      let searchBar = searchController.searchBar
+      filterContentForSearchText(searchBar.text!)
+  }
 }
