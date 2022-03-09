@@ -9,11 +9,6 @@ import UIKit
 
 class AllGroupCell: UITableViewCell {
     
-//    static func nib() -> UINib {
-//
-//        return UINib(nibName: "AllGroupCell", bundle: nil)
-//    }`````
-    
     @IBOutlet weak var allGroupName: UILabel!
     @IBOutlet weak var allGroupeImage: UIImageView!
     

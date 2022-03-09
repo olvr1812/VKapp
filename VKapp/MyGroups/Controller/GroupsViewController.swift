@@ -12,15 +12,18 @@ class GroupsViewController: UITableViewController {
     
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-
+        
         // Проверяем идентификатор, чтобы убедиться, что это нужный переход
         if segue.identifier == "addGroup" {
+            
+            print("It work too")
             
             // Получаем ссылку на контроллер, с которого осуществлен переход
             let allGroupsController = segue.source as! AllGroupsController
             
             // Получаем индекс выделенной ячейки
             if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
+                print(allGroupsController.all_groups)
                 
                 // Получаем город по индексу
                 let data = allGroupsController.all_groups[indexPath.row]
@@ -45,6 +48,38 @@ class GroupsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var url = URLComponents()
+        
+        url.scheme = "https"
+        url.host = "api.vk.com"
+        url.path = "/method/groups.get"
+        url.queryItems = [
+            URLQueryItem(name: "access_token", value: Session.session.token),
+            URLQueryItem(name: "user_id", value: String(Session.session.userId)),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "v", value: "5.131")
+        ]
+        
+        
+        
+        var request = URLRequest(url: url.url!)
+        
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            
+            print(json)
+        }
+        
+        task.resume()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -95,7 +130,7 @@ class GroupsViewController: UITableViewController {
             // Удаляем группу из массива
             groups.remove(at: indexPath.row)
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

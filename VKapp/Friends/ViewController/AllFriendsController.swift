@@ -12,16 +12,64 @@ import UIKit
 class AllFriendsController: UITableViewController {
     
     
+    
     @IBOutlet var friendsTableView: UITableView!
     
     
-    var friendsCellList: [friendsLabel] = [.init(name: "Simba", photo: "1"),
-                                           .init(name: "Hercules", photo: "2"),
-                                           .init(name: "James P. Sallyvan", photo: "3"),
-                                           .init(name: "Stuart Little", photo: "4"),
-                                           .init(name: "Mike Vazovsky", photo: "5")]
+//    var friendsCellList: [friendsLabel] = [
+//        .init(name: "Asterix", surname: "", photo: "1"),
+//        .init(name: "Hercules", surname: "", photo: "2"),
+//        .init(name: "James P.", surname: "Sallyvan", photo: "3"),
+//        .init(name: "Simba", surname: "", photo: "1"),
+//        .init(name: "Bart", surname: "Simpson", photo: "1"),
+//        .init(name: "Homer", surname: "Simpson", photo: "1"),
+//        .init(name: "Liza", surname: "Simpson", photo: "1"),
+//        .init(name: "Marge", surname: "Simpson", photo: "1"),
+//        .init(name: "Mo", surname: "Szyslak", photo: "1"),
+//        .init(name: "Stuart", surname: "Little", photo: "4"),
+//        .init(name: "Lighting", surname: "McQueen", photo: "1"),
+//        .init(name: "Sailor", surname: "Moon", photo: "1"),
+//        .init(name: "Mufasa", surname: "", photo: "1"),
+//        .init(name: "Mike", surname: "Vazovsky", photo: "5")
+//    ]
+    
+    private var friendsCellList_A: [friendsLabel] = [.init(name: "Asterix", surname: "", photo: "asterix")]
+    
+    private var friendsCellList_H: [friendsLabel] = [
+        .init(name: "Hercules", surname: "", photo: "2"),
+    ]
+    
+    private var friendsCellList_L: [friendsLabel] = [
+        .init(name: "Stuart", surname: "Little", photo: "4")
+    ]
+    
+    private var friendsCellList_M: [friendsLabel] = [
+        .init(name: "Lighting", surname: "McQueen", photo: "McQueen"),
+        .init(name: "Sailor", surname: "Moon", photo: "sailor"),
+        .init(name: "Mufasa", surname: "", photo: "mufasa")
+    ]
+    
+    private var friendsCellList_S: [friendsLabel] = [
+        .init(name: "James P.", surname: "Sallyvan", photo: "3"),
+        .init(name: "Bart", surname: "Simpson", photo: "bart"),
+        .init(name: "Homer", surname: "Simpson", photo: "homer"),
+        .init(name: "Liza", surname: "Simpson", photo: "liza"),
+        .init(name: "Marge", surname: "Simpson", photo: "marge"),
+        .init(name: "Mo", surname: "Szyslak", photo: "mo")
+    ]
+    
+    private var friendsCellList_V: [friendsLabel] = [
+        .init(name: "Mike", surname: "Vazovsky", photo: "5")
+    ]
+    
+    private let friendCellError: [friendsLabel] = [.init (name: "Error", surname: "Error", photo: "1")]
+    
+    private let numberOfSection = 5
+    
+
     
     private let firendProfileIdentifire = "friendsProfile"
+    private let friendHeaderIdentifier = "headerForFriendListID"
     
     
 
@@ -35,6 +83,59 @@ class AllFriendsController: UITableViewController {
         friendsTableView.rowHeight = 72
         
         registerTableView()
+        registerHeaderTableView()
+        
+//        var url = URLComponents()
+//        url.scheme = "https"
+//        url.host = "api.vk.com/method"
+        
+//        let url = URL(string: "https://api.vk.com/method/friends.get?access_token=291649506a07c53cb92b687895713d612939d6df3b3f98924b6430fedbc1324d81be149e2176ac12c5771&v    lds=online,photo_50")
+        
+        var urlFriends = URLComponents()
+        urlFriends.scheme = "https"
+        urlFriends.host = "api.vk.com"
+        urlFriends.path = "/method/friends.get"
+        urlFriends.queryItems = [URLQueryItem(name: "access_token", value: Session.session.token),
+                                 URLQueryItem(name: "v", value: "5.81"),
+                                 URLQueryItem(name: "fields", value: "photo_200_orig, city"),
+                                 URLQueryItem(name: "count", value: "10")]
+        
+        var request = URLRequest(url: urlFriends.url!)
+        
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        
+        
+        
+        
+        print(request)
+
+        // сессия по умолчанию
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            print(json)
+            
+        }
+        
+        task.resume()
+        
+        
+
+        // задача для запуска
+//        let task = session.dataTask(with: url!) { (data, response, error) in
+//            // в замыкании данные, полученные от сервера, мы преобразуем в json
+//            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+//            // выводим в консоль
+//            print(json)
+//
+//        }
+//        // запускаем задачу
+//
+//        task.resume()
+//
     }
 
     // MARK: - Table view data source
@@ -43,32 +144,86 @@ class AllFriendsController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return numberOfSection
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        var rowCount = 0
+        
+        switch (section) {
+        case 0:
+            rowCount = friendsCellList_A.count
+        case 1:
+            rowCount = friendsCellList_H.count
+        case 2:
+            rowCount = friendsCellList_L.count
+        case 3:
+            rowCount = friendsCellList_M.count
+        case 4:
+            rowCount = friendsCellList_S.count
+        case 5:
+            rowCount = friendsCellList_V.count
+        default:
+            rowCount = 0
+        }
 
-        return friendsCellList.count
+        return rowCount
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // Получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellID", for: indexPath) as! AllFriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellID") as! AllFriendsCell
         // Получаем имя друга для конкретной строки
-        let cellFriendInfo = friendsCellList[indexPath.row]
+        
+        switch (indexPath.section) {
+        case 0:
+            cell.infoInCell(with: friendsCellList_A[indexPath.row])
+        case 1:
+            cell.infoInCell(with: friendsCellList_H[indexPath.row])
+        case 2:
+            cell.infoInCell(with: friendsCellList_L[indexPath.row])
+        case 3:
+            cell.infoInCell(with: friendsCellList_M[indexPath.row])
+        case 4:
+            cell.infoInCell(with: friendsCellList_S[indexPath.row])
+        case 5:
+            cell.infoInCell(with: friendsCellList_V[indexPath.row])
+        default:
+            cell.infoInCell(with: friendCellError[indexPath.row])
+        }
 
         // Устанавливаем имя друга в надпись ячейки
-        cell.infoInCell(with: cellFriendInfo)
+        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cellFriendInfo = friendsCellList[indexPath.row]
-        performSegue(withIdentifier: "friendPriofile", sender: cellFriendInfo)
+        var cellFriendInfo = friendsLabel(name: nil, surname: nil, photo: nil)
+        
+        switch(indexPath.section) {
+            
+        case 1:
+            cellFriendInfo = friendsCellList_H[indexPath.row]
+        case 2:
+            cellFriendInfo = friendsCellList_L[indexPath.row]
+        case 3:
+            cellFriendInfo = friendsCellList_M[indexPath.row]
+        case 4:
+            cellFriendInfo = friendsCellList_S[indexPath.row]
+        case 5:
+            cellFriendInfo = friendsCellList_V[indexPath.row]
+        default:
+            cellFriendInfo = friendsCellList_A[indexPath.row]
+        }
+        
+        let friendInfoSender = cellFriendInfo
+        
+        performSegue(withIdentifier: "friendPriofile", sender: friendInfoSender)
     }
     
 
@@ -86,7 +241,7 @@ class AllFriendsController: UITableViewController {
         
         if editingStyle == .delete {
             
-            friendsCellList.remove(at: indexPath.row)
+            friendsCellList_S.remove(at: indexPath.row)
             
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -103,39 +258,64 @@ class AllFriendsController: UITableViewController {
             guard let collectionViewController = segue.destination as? PhotosCollectionViewController, let cellFriendInfo = sender as? friendsLabel else {return}
             if cellFriendInfo.name == "Simba" {
                 collectionViewController.userInfo = [
-                    .init(name: "Simba", photo: "simb1"),
-                    .init(name: "Simba", photo: "simb2"),
-                    .init(name: "Simba", photo: "simb3")
+                    .init(name: "Simba", surname: "", photo: "simb1"),
+                    .init(name: "Simba", surname: "", photo: "simb2"),
+                    .init(name: "Simba", surname: "", photo: "simb3")
                 ]
             } else if cellFriendInfo.name == "Hercules" {
                 collectionViewController.userInfo = [
-                    .init(name: "Hercules", photo: "herc1"),
-                    .init(name: "Hercules", photo: "herc2"),
-                    .init(name: "Hercules", photo: "herc3"),
-                    .init(name: "Hercules", photo: "herc4")]
-            } else if cellFriendInfo.name == "James P. Sallyvan" {
+                    .init(name: "Hercules", surname: "", photo: "herc1"),
+                    .init(name: "Hercules", surname: "", photo: "herc2"),
+                    .init(name: "Hercules", surname: "", photo: "herc3"),
+                    .init(name: "Hercules", surname: "", photo: "herc4")]
+            } else if cellFriendInfo.name == "James P." {
                 collectionViewController.userInfo = [
-                    .init(name: "James P. Sallyvan", photo: "sal1"),
-                    .init(name: "James P. Sallyvan", photo: "sal2"),
-                    .init(name: "James P. Sallyvan", photo: "sal3")]
-            } else if cellFriendInfo.name == "Stuart Little" {
+                    .init(name: "James P. Sallyvan", surname: "", photo: "sal1"),
+                    .init(name: "James P. Sallyvan", surname: "", photo: "sal2"),
+                    .init(name: "James P. Sallyvan", surname: "", photo: "sal3")]
+            } else if cellFriendInfo.name == "Stuart" {
                 collectionViewController.userInfo = [
-                    .init(name: "Stuart Little", photo: "lit1"),
-                    .init(name: "Stuart Little", photo: "lit2"),
-                    .init(name: "Stuart Little", photo: "lit3")]
-            } else if cellFriendInfo.name == "Mike Vazovsky" {
+                    .init(name: "Stuart Little", surname: "", photo: "lit1"),
+                    .init(name: "Stuart Little", surname: "", photo: "lit2"),
+                    .init(name: "Stuart Little", surname: "", photo: "lit3")]
+            } else if cellFriendInfo.name == "Mike" {
                 collectionViewController.userInfo = [
-                    .init(name: "Mike Vazovsky", photo: "mik1"),
-                    .init(name: "Mike Vazovsky", photo: "mik2"),
-                    .init(name: "Mike Vazovsky", photo: "mik3")]
+                    .init(name: "Mike Vazovsky", surname: "", photo: "mik1"),
+                    .init(name: "Mike Vazovsky", surname: "", photo: "mik2"),
+                    .init(name: "Mike Vazovsky", surname: "", photo: "mik3")]
             }
             collectionViewController.userInfo.append(cellFriendInfo)
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Friends"
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: friendHeaderIdentifier) as! HeaderForCellViewController
+        
+        switch (section) {
+        case 0:
+            headerCell.headerLabel.text = "A"
+        case 1:
+            headerCell.headerLabel.text = "H"
+        case 2:
+            headerCell.headerLabel.text = "L"
+        case 3:
+            headerCell.headerLabel.text = "M"
+        case 4:
+            headerCell.headerLabel.text = "S"
+        case 5:
+            headerCell.headerLabel.text = "V"
+        default:
+            headerCell.headerLabel.text = "Error"
+        }
+        
+        
+        return headerCell
     }
+    
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Friends"
+//    }
 
     /*
     // Override to support rearranging the table view.
@@ -169,3 +349,39 @@ private extension AllFriendsController {
         tableView.register(AllFriendsCell.nib(), forCellReuseIdentifier: "friendCellID")
     }
 }
+
+
+extension AllFriendsController {
+    func registerHeaderTableView() {
+        tableView.register(HeaderForCellViewController.nib(), forCellReuseIdentifier: friendHeaderIdentifier)
+    }
+}
+
+//extension AllFriendsController {
+//    func addInfoFriends() {
+//        var url = URLComponents()
+//        url.scheme = "https"
+//        url.host = "api.vk.com"
+//        url.path = "/method/friends.get"
+//
+//        guard let host = url.url else { return }
+//
+//        let params: [String: Any] = ["access_token": Session.session.token, "v": "5.68"]
+//
+//        let session = URLSession.shared
+//
+//        // задача для запуска
+//        let task = session.dataTask(with: url!) { (data, response, error) in
+//            // в замыкании данные, полученные от сервера, мы преобразуем в json
+//            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+//            // выводим в консоль
+//            print(json)
+//
+//        }
+//        // запускаем задачу
+//
+//        task.resume()
+//
+//    }
+//}
+

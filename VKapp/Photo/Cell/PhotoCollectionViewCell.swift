@@ -31,7 +31,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func infoInCell(with info: friendsLabel) {
         //labelName.text = info.name
             
-        FriendPhoto.image = UIImage(named: info.photo)
+        FriendPhoto.image = UIImage(named: info.photo ?? "1")
         
         FriendPhoto.layer.borderWidth = 2
         FriendPhoto.layer.borderColor = UIColor.black.cgColor
