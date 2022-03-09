@@ -48,6 +48,38 @@ class GroupsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var url = URLComponents()
+        
+        url.scheme = "https"
+        url.host = "api.vk.com"
+        url.path = "/method/groups.get"
+        url.queryItems = [
+            URLQueryItem(name: "access_token", value: Session.session.token),
+            URLQueryItem(name: "user_id", value: String(Session.session.userId)),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "v", value: "5.131")
+        ]
+        
+        
+        
+        var request = URLRequest(url: url.url!)
+        
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            
+            print(json)
+        }
+        
+        task.resume()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

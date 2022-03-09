@@ -16,26 +16,40 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-        // Do any additional setup after loading the view.
+        
+        var url = URLComponents()
+        
+        url.scheme = "https"
+        url.host = "api.vk.com"
+        url.path = "/method/photos.get"
+        url.queryItems = [
+            URLQueryItem(name: "access_token", value: Session.session.token),
+            URLQueryItem(name: "owner_id", value: "\(Session.session.userId)"),
+            URLQueryItem(name: "album_id", value: "profile"),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "v", value: "5.131")
+        ]d
+        
+        var request = URLRequest(url: url.url!)
+        
+        request.httpMethod = "GET"
+        
+        
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            
+            print(json)
+        }
+        
+        task.resume()
+        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections

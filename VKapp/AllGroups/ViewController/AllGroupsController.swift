@@ -43,14 +43,39 @@ class AllGroupsController: UITableViewController {
         navigationItem.searchController = searchController
         
         definesPresentationContext = true
-
-        // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         tableView.reloadData()
+        
+        var url = URLComponents()
+        
+        url.scheme = "https"
+        url.host = "api.vk.com"
+        url.path = "/method/groups.search"
+        url.queryItems = [
+            URLQueryItem(name: "access_token", value: Session.session.token),
+            URLQueryItem(name: "q", value: "a"),
+            URLQueryItem(name: "sorted", value: "0"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "v", value: "5.131")
+        ]
+        
+        var request = URLRequest(url: url.url!)
+        
+        request.httpMethod = "GET"
+        
+        
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            
+            print(json)
+        }
+        
+        task.resume()
+        
+        
         
     }
 

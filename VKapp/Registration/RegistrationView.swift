@@ -6,157 +6,100 @@
 //
 
 import UIKit
-
-var data: [String] = ["Creat view", "Add stirngs", "Add data", "Add buttton", "Create exit from app"]
-
-
+import WebKit
 
 class RegisteretionView: UIViewController {
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // Жест нажатия
-//        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-//        // Присваиваем его UIScrollVIew
-//        scrollView?.addGestureRecognizer(hideKeyboardGesture)
-        
-        animateTextField()
-    }
-    
-    @IBOutlet weak var loginInput: UITextField!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet weak var passwordInput: UITextField!
-    
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
-        print("Все прошло успешно")
-    }
-    
-    
-    @IBAction func loginButonPressed(_ sender: Any) {
-        
-        let login = loginInput.text!
-        let password = passwordInput.text!
-        
-        if (login == "admin" && password == "1234567") {
-            print("Успешная авторизация")
-        } else {
-                print("Не верный логин или пароль")
-        }
+    @IBOutlet weak var webview: WKWebView! {
+
+    didSet{ webview.navigationDelegate = self }
         
     }
     
-    // Когда клавиатура появляется
-    @objc func keyboardWasShown(notification: Notification) {
-
-    // Получаем размер клавиатуры
-        let info = notification.userInfo! as NSDictionary
-        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
-
-    // Добавляем отступ внизу UIScrollView, равный размеру клавиатуры
-        self.scrollView?.contentInset = contentInsets
-        scrollView?.scrollIndicatorInsets = contentInsets
-        print(contentInsets)
-    }
-
-    //Когда клавиатура исчезает
-    @objc func keyboardWillBeHidden(notification: Notification) {
-
-    // Устанавливаем отступ внизу UIScrollView, равный 0
-
-    let contentInsets = UIEdgeInsets.zero
-
-    scrollView?.contentInset = contentInsets
-        
+    let session = Session.session
+    
+    private var urlComponents: URLComponents = {
+        var auth = URLComponents()
+        auth.scheme = "https"
+        auth.host = "oauth.vk.com"
+        auth.path = "/authorize"
+        auth.queryItems = [
+        URLQueryItem(name: "client_id", value: "8085963"),
+        URLQueryItem(name: "display", value: "mobile"),
+        URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+        URLQueryItem(name: "scope", value: "60"),
+        URLQueryItem(name: "response_type", value: "token"),
+        URLQueryItem(name: "v", value: "5.68")
+        ]
+        return auth
+    }()
+    
+    override func viewDidLayoutSubviews() {
+        print("Did Layout work")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    // Подписываемся на два уведомления: одно приходит при появлении клавиатуры
-
-    NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
-
-    // Второе — когда она пропадает
-
-    NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+    override func viewWillLayoutSubviews() {
+        print("Will layout work")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        print("Will disappear work")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("will appear work")
+    }
+    
+    override func viewDidLoad() {
+        print("work \(self.nibName)")
+        super.viewDidLoad()
+        
+        guard let url = urlComponents.url else { return }
+        
+        webview.load(URLRequest(url: url))
+    }
 
-    NotificationCenter.default.removeObserver(self, name:
-        UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-    }
-    
-    @objc func hideKeyboard() {
-
-    self.scrollView?.endEditing(true)
-    }
-    
-    // Метод для вывода ошибки, если пароль или лоин будет введен не верно
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Проверяем введенные данные
-        let checkResults = checkUserData()
-        
-        if !checkResults {
-            showLoginError()
-        }
-            return checkResults
-    }
-        // Если данные не верны, то выведем ошибку
-        
-        
-        func checkUserData() -> Bool {
-    
-        guard let login = loginInput.text,
-              let password = passwordInput.text else {return false}
-        
-        if login == "olvr" && password == "1234" {
-            return true
-        } else {
-            return false
-        }
-    }
-        
-        
-        func showLoginError() {
-        // Создаем контроллер
-        let alert = UIAlertController(title: "Error", message: "Неверный логин или пароль", preferredStyle: .alert)
-        
-        // Создаем кнопку контроллера
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        // Добавляем кнопку на UIAlertController
-        alert.addAction(action)
-        
-        // Показываем UIAlertController
-        present(alert, animated: true, completion: nil)
-        }
 }
 
-private extension RegisteretionView {
-    func animateTextField() {
+extension RegisteretionView: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
-        let offset = view.bounds.width
+        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment else {
+            decisionHandler(.allow)
+            return
+        }
+
+        let params = fragment
+            .components(separatedBy: "&")
+            .map({ $0.components(separatedBy: "=")})
+            .reduce([String: String]()) {result, param in
+                var dict = result
+                let key = param[0]
+                let value = param[1]
+                dict[key] = value
+                return dict
+            }
         
-        passwordInput.transform = CGAffineTransform(translationX: -offset, y: 0)
+        guard let token = params["access_token"],
+              let userIDstr = params["user_id"],
+              let userID = Int(userIDstr) else {
+                  decisionHandler(.allow)
+                  return }
         
-        loginInput.transform = CGAffineTransform(translationX: offset, y: 0)
+        session.token = token
+        session.userId = userID
         
-        UIView.animate(withDuration: 1, delay: 1, options: [.curveEaseOut], animations: {
-            self.loginInput.transform = .identity
-            self.passwordInput.transform = .identity
-            
-        })
-    
+        print("User ID: \(session.userId)\nToken: \(session.token)")
         
+        performSegue(withIdentifier: "showTabBar", sender: nil)
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "tabBarID")
+//        present(vc, animated: true)
+
+        decisionHandler(.cancel)
     }
 }
+
+

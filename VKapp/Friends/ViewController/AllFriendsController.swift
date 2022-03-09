@@ -12,6 +12,7 @@ import UIKit
 class AllFriendsController: UITableViewController {
     
     
+    
     @IBOutlet var friendsTableView: UITableView!
     
     
@@ -83,6 +84,58 @@ class AllFriendsController: UITableViewController {
         
         registerTableView()
         registerHeaderTableView()
+        
+//        var url = URLComponents()
+//        url.scheme = "https"
+//        url.host = "api.vk.com/method"
+        
+//        let url = URL(string: "https://api.vk.com/method/friends.get?access_token=291649506a07c53cb92b687895713d612939d6df3b3f98924b6430fedbc1324d81be149e2176ac12c5771&v    lds=online,photo_50")
+        
+        var urlFriends = URLComponents()
+        urlFriends.scheme = "https"
+        urlFriends.host = "api.vk.com"
+        urlFriends.path = "/method/friends.get"
+        urlFriends.queryItems = [URLQueryItem(name: "access_token", value: Session.session.token),
+                                 URLQueryItem(name: "v", value: "5.81"),
+                                 URLQueryItem(name: "fields", value: "photo_200_orig, city"),
+                                 URLQueryItem(name: "count", value: "10")]
+        
+        var request = URLRequest(url: urlFriends.url!)
+        
+        request.httpMethod = "GET"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        
+        
+        
+        
+        print(request)
+
+        // сессия по умолчанию
+        let task = session.dataTask(with: request) { data, respone, error in
+            guard let data = data,
+            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
+            print(json)
+            
+        }
+        
+        task.resume()
+        
+        
+
+        // задача для запуска
+//        let task = session.dataTask(with: url!) { (data, response, error) in
+//            // в замыкании данные, полученные от сервера, мы преобразуем в json
+//            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+//            // выводим в консоль
+//            print(json)
+//
+//        }
+//        // запускаем задачу
+//
+//        task.resume()
+//
     }
 
     // MARK: - Table view data source
@@ -303,3 +356,32 @@ extension AllFriendsController {
         tableView.register(HeaderForCellViewController.nib(), forCellReuseIdentifier: friendHeaderIdentifier)
     }
 }
+
+//extension AllFriendsController {
+//    func addInfoFriends() {
+//        var url = URLComponents()
+//        url.scheme = "https"
+//        url.host = "api.vk.com"
+//        url.path = "/method/friends.get"
+//
+//        guard let host = url.url else { return }
+//
+//        let params: [String: Any] = ["access_token": Session.session.token, "v": "5.68"]
+//
+//        let session = URLSession.shared
+//
+//        // задача для запуска
+//        let task = session.dataTask(with: url!) { (data, response, error) in
+//            // в замыкании данные, полученные от сервера, мы преобразуем в json
+//            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+//            // выводим в консоль
+//            print(json)
+//
+//        }
+//        // запускаем задачу
+//
+//        task.resume()
+//
+//    }
+//}
+

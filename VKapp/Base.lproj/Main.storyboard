@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,129 +11,19 @@
         <!--RegistretionView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="RegistretionView" customClass="RegisteretionView" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC" customClass="GradientBackground" customModule="VKapp" customModuleProvider="target">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" userLabel="RegistretionView" customClass="RegisteretionView" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <wkWebView key="view" contentMode="scaleToFill" id="ZO0-S7-ebj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-Hy-KWx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="VK_Monochrome_Logo_t" translatesAutoresizingMaskIntoConstraints="NO" id="0sO-XN-Eip">
-                                        <rect key="frame" x="164" y="150" width="86" height="81"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="86" id="VIw-Aj-OdP"/>
-                                            <constraint firstAttribute="height" constant="81" id="Xeg-bE-Acm"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COb-G3-TGR">
-                                        <rect key="frame" x="163" y="261" width="88" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Lyn-oH-jFY"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="Oyk-ZF-dN7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Введите логин" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ZPx-1m-Ppc">
-                                        <rect key="frame" x="130" y="290" width="154" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="UZJ-jT-zA5"/>
-                                            <constraint firstAttribute="height" constant="34" id="bpr-e5-Wbm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Введите пароль" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HBH-EU-tqQ">
-                                        <rect key="frame" x="130" y="383" width="154" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="WFu-vK-KA8"/>
-                                            <constraint firstAttribute="height" constant="34" id="mPH-Nu-Iyq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27P-tK-LG4">
-                                        <rect key="frame" x="163" y="354" width="88" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="0D7-Cm-Zyz"/>
-                                            <constraint firstAttribute="height" constant="21" id="kZi-ZJ-gKc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVF-jh-ydm">
-                                        <rect key="frame" x="151" y="457" width="112" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="Ah9-WM-4kK"/>
-                                            <constraint firstAttribute="width" constant="112" id="zk4-sg-JUE"/>
-                                        </constraints>
-                                        <buttonConfiguration key="configuration" style="filled" title="Войти"/>
-                                        <connections>
-                                            <action selector="loginButonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XmC-lG-Z4l"/>
-                                            <segue destination="463-Rh-pYq" kind="presentation" modalPresentationStyle="fullScreen" id="Wa6-EY-GB8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="0sO-XN-Eip" firstAttribute="top" secondItem="Rcr-Hy-KWx" secondAttribute="top" constant="150" id="0G0-Ji-NWd"/>
-                                    <constraint firstAttribute="trailing" secondItem="MVF-jh-ydm" secondAttribute="trailing" constant="151" id="2AF-Vx-Jsw"/>
-                                    <constraint firstItem="MVF-jh-ydm" firstAttribute="top" secondItem="HBH-EU-tqQ" secondAttribute="bottom" constant="40" id="2fF-PG-BNG"/>
-                                    <constraint firstItem="COb-G3-TGR" firstAttribute="top" secondItem="0sO-XN-Eip" secondAttribute="bottom" constant="30" id="6oX-em-AZl"/>
-                                    <constraint firstItem="HBH-EU-tqQ" firstAttribute="top" secondItem="27P-tK-LG4" secondAttribute="bottom" constant="8" id="9eW-hf-CVT"/>
-                                    <constraint firstItem="ZPx-1m-Ppc" firstAttribute="top" secondItem="COb-G3-TGR" secondAttribute="bottom" constant="8" id="FDH-YA-bD7"/>
-                                    <constraint firstItem="COb-G3-TGR" firstAttribute="centerX" secondItem="Rcr-Hy-KWx" secondAttribute="centerX" id="GQn-R0-Usk"/>
-                                    <constraint firstItem="HBH-EU-tqQ" firstAttribute="centerX" secondItem="Rcr-Hy-KWx" secondAttribute="centerX" id="Lqb-dU-CKv"/>
-                                    <constraint firstItem="ZPx-1m-Ppc" firstAttribute="centerX" secondItem="Rcr-Hy-KWx" secondAttribute="centerX" id="RsE-8B-PzZ"/>
-                                    <constraint firstItem="0sO-XN-Eip" firstAttribute="centerX" secondItem="Rcr-Hy-KWx" secondAttribute="centerX" id="VYB-PM-egL"/>
-                                    <constraint firstItem="27P-tK-LG4" firstAttribute="centerX" secondItem="Rcr-Hy-KWx" secondAttribute="centerX" id="d3n-KM-N5V"/>
-                                    <constraint firstAttribute="bottom" secondItem="MVF-jh-ydm" secondAttribute="bottom" constant="418" id="pVo-zI-hXf"/>
-                                    <constraint firstItem="MVF-jh-ydm" firstAttribute="centerX" secondItem="HBH-EU-tqQ" secondAttribute="centerX" id="ulY-Z0-N89"/>
-                                    <constraint firstItem="27P-tK-LG4" firstAttribute="top" secondItem="ZPx-1m-Ppc" secondAttribute="bottom" constant="30" id="xLO-sn-Skn"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Rcr-Hy-KWx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GD6-5J-CNk"/>
-                            <constraint firstAttribute="bottom" secondItem="Rcr-Hy-KWx" secondAttribute="bottom" id="kVH-51-p0r"/>
-                            <constraint firstItem="Rcr-Hy-KWx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m3K-S3-CkP"/>
-                            <constraint firstItem="Rcr-Hy-KWx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="q9b-od-K6s"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" systemColor="systemPurpleColor"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" systemColor="systemTealColor"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
-                                <integer key="value" value="0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                <integer key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                <point key="value" x="0.0" y="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                <point key="value" x="1" y="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="point" keyPath="midlePoint">
-                                <point key="value" x="0.5" y="0.5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <navigationItem key="navigationItem" id="zMr-47-Tkk"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                    </wkWebView>
                     <connections>
-                        <outlet property="loginInput" destination="ZPx-1m-Ppc" id="DJ3-a4-ZVv"/>
-                        <outlet property="passwordInput" destination="HBH-EU-tqQ" id="FAr-H8-JiJ"/>
-                        <outlet property="scrollView" destination="Rcr-Hy-KWx" id="7el-dc-CRt"/>
+                        <outlet property="webview" destination="ZO0-S7-ebj" id="KYl-OO-Fvz"/>
+                        <segue destination="463-Rh-pYq" kind="show" identifier="showTabBar" id="Ree-6w-D9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -146,7 +35,7 @@
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="t4H-1d-PPf" customClass="AllFriendsController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="6UW-FQ-dkg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -270,7 +159,7 @@
             <objects>
                 <collectionViewController id="lM9-Zw-Tqh" customClass="PhotosCollectionViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I0b-32-5GW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p1s-iu-Jk0">
@@ -281,7 +170,7 @@
                             <inset key="sectionInset" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="scaleToFill" id="0HC-nN-Inr">
-                            <rect key="frame" x="0.0" y="-88" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="-56" width="414" height="842"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
@@ -416,10 +305,10 @@
         <!--Navigation Controller-->
         <scene sceneID="RX1-5s-72c">
             <objects>
-                <navigationController id="nqa-fE-3qP" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="nqa-fE-3qP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="1Wb-Ax-jHP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vI-7a-7S4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -433,11 +322,11 @@
         <!--Друзья-->
         <scene sceneID="QUH-kb-oSZ">
             <objects>
-                <navigationController id="Ppj-YR-k3h" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="Ppj-YR-k3h" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="GHm-hf-Zl9"/>
                     <navigationItem key="navigationItem" title="Друзья" id="LAb-VM-KOP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cro-Ps-jVF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -451,7 +340,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="B93-6o-q4b">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="463-Rh-pYq" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarID" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="463-Rh-pYq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="CC9-Do-tlB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="71M-Tf-YWj">
@@ -470,7 +359,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="VK_Monochrome_Logo_t" width="350" height="350"/>
         <image name="kisspng-smiley-emoticon-clip-art-funny-kids-5b1538aa9150f3.8462367215281174185952" width="900" height="800"/>
         <image name="suit.heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
@@ -478,12 +366,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
