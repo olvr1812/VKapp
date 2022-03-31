@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "593A5254-638D-4775-9A0C-E303E99AC516"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "459A5D5E-2039-4C23-9532-08D6A7CE59B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Source/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4211EAEC-9F36-432E-9D02-14E016392F81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D471E7E3-5A37-4F98-B130-24682095FE24"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "friends"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - afc3a7e7d2da0726"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.friends.getter : Swift.Array&lt;VKapp.User&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - 39e970a4ca9133ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.friends.setter : Swift.Array&lt;VKapp.User&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - fd5f4599d1d4cfe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.friends.modify : Swift.Array&lt;VKapp.User&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - 68f9d5c1f17926d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.friends.modify : Swift.Array&lt;VKapp.User&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - 22e6728e9d86e928"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.init(style: __C.UITableViewStyle) -&gt; VKapp.AllFriendsController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - 73e9362b1445c156"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VKapp.AllFriendsController"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  uuid = "E4D403AA-4EDE-4E8A-A16D-8EC216D38C12 - 2adbd4728d16d113"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VKapp.AllFriendsController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VKapp.AllFriendsController&gt;"
+                  moduleName = "VKapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osalikhov/Documents/Classes/My_apps/VKapp/VKapp/Friends/ViewController/AllFriendsController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "340">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "825DF00C-ECEE-4610-8DBF-CE0E9CF4098B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "friends"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AE55D9A-6A21-4E8C-9F2E-A753A16533AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "friends"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73A5EC1E-0C12-43D5-89A5-3E2ACCF9AA69"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VKapp/Friends/ViewController/AllFriendsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "friends"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

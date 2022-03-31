@@ -59,14 +59,6 @@ class GradientBackground: UIView {
         
     }
     
-    @IBInspectable var middleColor: UIColor = .blue {
-        didSet {
-            self.updateColors()
-            
-        }
-        
-    }
-    
     @IBInspectable var endColor: UIColor = .black {
         didSet {
             self.updateColors()
@@ -83,8 +75,6 @@ class GradientBackground: UIView {
         
     }
     
-    var middleLocation: CGFloat = 0.5 
-    
     @IBInspectable var endLocation: CGFloat = 1 {
         didSet {
             self.updateLocations()
@@ -94,14 +84,6 @@ class GradientBackground: UIView {
     }
 
     @IBInspectable var startPoint: CGPoint = .zero {
-        didSet {
-            self.updateStartPoint()
-            
-        }
-        
-    }
-    
-    @IBInspectable var middlePoint: CGPoint = CGPoint(x: 0.5, y: 0.5) {
         didSet {
             self.updateStartPoint()
             

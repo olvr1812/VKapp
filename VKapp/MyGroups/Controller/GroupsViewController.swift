@@ -12,9 +12,10 @@ class GroupsViewController: UITableViewController {
     
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-
+        
         // Проверяем идентификатор, чтобы убедиться, что это нужный переход
         if segue.identifier == "addGroup" {
+            
             
             // Получаем ссылку на контроллер, с которого осуществлен переход
             let allGroupsController = segue.source as! AllGroupsController
@@ -25,10 +26,10 @@ class GroupsViewController: UITableViewController {
                 // Получаем город по индексу
                 let data = allGroupsController.all_groups[indexPath.row]
                 
-                if !groups.contains(data.name) {
+                if !groupsForWork.contains(data.name) {
                     
                     // Добавляем имя группы в список выбранных групп
-                    groups.append(data.name)
+                    groupsForWork.append(data.name)
                     
                     //Добовляем имя группы и имя картинки
                     dataGroup.append(data)
@@ -40,38 +41,75 @@ class GroupsViewController: UITableViewController {
         }
     }
     
-    var groups = [String]()
+    var groupsForWork = [String]()
+    
+    
+    
+    var groups = [Group]() {
+        didSet {
+//            for group in groups where group.name != "DELETED" {
+//                print(group.name)
+//                groupsDict.removeAll()
+//                groups.sort()
+//                print(groups)
+//                for i in groups.indices {
+//                    let letterKey = String((groups[i].name).prefix(1))
+//                    if var groupsOnLetterKey = groupsDict[letterKey] {
+//                        groupsOnLetterKey.append(groups[i])
+//                        groupsDict[letterKey] = groupsOnLetterKey
+//                    } else {
+//                        groupsDict[letterKey] = [groups[i]]
+//                    }
+//                }
+//                groupsSectionName = [String](groupsDict.keys).sorted(by: { $0 < $1 })
+//            }
+            DispatchQueue.main.async {
+                self.groupsFiltDict = self.groups.sorted()
+                print(self.groupsFiltDict)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    var groupsDict =  [String: [Group]]()
     var dataGroup = [infoGroupInView]()
+    var groupsSectionName = [String]()
+    var groupsFiltDict = [Group]()
+    
+    private let networkFuncs = NetworkFuncs()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        networkFuncs.getGroups() { [weak self] result in
+            switch result {
+            case .success(let responseGroups):
+                self?.groups = responseGroups.items
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return groupsFiltDict.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
-
-        let group = dataGroup[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as? GroupCell else { return UITableViewCell() }
         
-        cell.infoInView(with: group)
+        let groupInfos = infoGroupInView(name: groupsFiltDict[indexPath.row].name, image: groupsFiltDict[indexPath.row].photo_50)
+//        let group = dataGroup[indexPath.row]
+        
+        cell.infoInView(with: groupInfos)
 
         return cell
     }
@@ -95,7 +133,7 @@ class GroupsViewController: UITableViewController {
             // Удаляем группу из массива
             groups.remove(at: indexPath.row)
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

@@ -12,31 +12,36 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var newView: UIView!
     
+    var friendPhotoFilt = [Photo]()
+    var usersPhoto = [Photo]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.usersPhoto = self.friendPhotoFilt
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     var userInfo = [friendsLabel]()
+    
+    private let networkFunc = NetworkFuncs()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-        // Do any additional setup after loading the view.
+        
+        networkFunc.getUserPhoto() { [weak self] result in
+            switch result {
+            case .success(let responsePhotos):
+                self?.usersPhoto = responsePhotos.items
+                print(responsePhotos.items)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -63,12 +68,11 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-    /*
+
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
 
     /*
     // Uncomment this method to specify if the specified item should be selected
