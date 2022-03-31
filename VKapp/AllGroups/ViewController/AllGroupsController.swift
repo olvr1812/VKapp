@@ -69,8 +69,6 @@ class AllGroupsController: UITableViewController {
         let task = session.dataTask(with: request) { data, respone, error in
             guard let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
-            
-            print(json)
         }
         
         task.resume()
@@ -82,7 +80,6 @@ class AllGroupsController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 

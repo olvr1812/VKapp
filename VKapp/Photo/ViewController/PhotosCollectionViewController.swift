@@ -12,41 +12,32 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var newView: UIView!
     
+    var friendPhotoFilt = [Photo]()
+    var usersPhoto = [Photo]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.usersPhoto = self.friendPhotoFilt
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     var userInfo = [friendsLabel]()
+    
+    private let networkFunc = NetworkFuncs()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var url = URLComponents()
-        
-        url.scheme = "https"
-        url.host = "api.vk.com"
-        url.path = "/method/photos.get"
-        url.queryItems = [
-            URLQueryItem(name: "access_token", value: Session.session.token),
-            URLQueryItem(name: "owner_id", value: "\(Session.session.userId)"),
-            URLQueryItem(name: "album_id", value: "profile"),
-            URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "count", value: "10"),
-            URLQueryItem(name: "v", value: "5.131")
-        ]d
-        
-        var request = URLRequest(url: url.url!)
-        
-        request.httpMethod = "GET"
-        
-        
-        
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task = session.dataTask(with: request) { data, respone, error in
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) else { return }
-            
-            print(json)
+        networkFunc.getUserPhoto() { [weak self] result in
+            switch result {
+            case .success(let responsePhotos):
+                self?.usersPhoto = responsePhotos.items
+                print(responsePhotos.items)
+            case .failure(let error):
+                print(error)
+            }
         }
-        
-        task.resume()
         
     }
 

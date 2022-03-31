@@ -16,25 +16,24 @@ class AllFriendsCell: UITableViewCell {
     
     @IBOutlet private var friendName: UILabel!
     @IBOutlet weak var friendSurname: UILabel!
-    @IBOutlet private var friendAvatar: UIImageView!
+    @IBOutlet weak var friendAvatar: UIImageView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     
     func infoInCell(with info: friendsLabel) {
         friendName.text = info.name
-        friendSurname.text = info.surname
+        self.friendSurname.text = info.surname
         
-        friendAvatar.image = UIImage(named: info.photo ?? "1")
-        friendAvatar.clipsToBounds = true
-        friendAvatar.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        friendAvatar.layer.borderWidth = 2
-        friendAvatar.layer.borderColor = UIColor.black.cgColor
-        friendAvatar.layer.cornerRadius = 35
+        self.friendAvatar.downloaded(from: info.photo!)
+        self.friendAvatar.clipsToBounds = true
+        self.friendAvatar.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        self.friendAvatar.layer.borderWidth = 2
+        self.friendAvatar.layer.borderColor = UIColor.black.cgColor
+        self.friendAvatar.layer.cornerRadius = 35
         
     }
     

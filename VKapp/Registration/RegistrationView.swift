@@ -35,24 +35,7 @@ class RegisteretionView: UIViewController {
         return auth
     }()
     
-    override func viewDidLayoutSubviews() {
-        print("Did Layout work")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        print("Will layout work")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("Will disappear work")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("will appear work")
-    }
-    
     override func viewDidLoad() {
-        print("work \(self.nibName)")
         super.viewDidLoad()
         
         guard let url = urlComponents.url else { return }
